@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Makaan - Your Housing solution</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .blurry-background {
+            background-image: url('img/property-1.jpg');
+            filter: blur(8px); /* Adjust the blur amount as needed */
+            -webkit-filter: blur(8px); /* For Safari */
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh; /* Adjust height as needed */
+            position: fixed;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+        .back-to-index {
+            position: fixed;
+            top: 25px;
+            left: 300px;
+            color: white; /* Text color */
+            background-color: #000080; /* Navy blue background */
+            padding: 10px 20px; /* Adjust padding as needed */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            text-decoration: none; /* Remove underline */
+            z-index: 100; /* Ensure it appears above the background */
+        }
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn back-to-index"><i class="bi bi-house-door"></i> Back to Home</a>    
+    <div class="blurry-background"></div>
+
+    <div class="container-xxl bg-white p-0">
+        <!-- Add Property Heading -->
+        <div class="container-fluid bg-primary py-4">
+            <div class="container text-center">
+                <h1 class="text-white mb-0">Add your Property</h1>
+            </div>
+        </div>
+        <!-- Add Property Heading End -->
+
+        <!-- Form Section Start -->
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="propertyForm">
+                                <div class="mb-3">
+                                    <label for="houseName" class="form-label">House Name</label>
+                                    <input type="text" class="form-control" id="houseName" placeholder="Enter house name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="propertyType" class="form-label">Property Type</label>
+                                    <select class="form-select" id="propertyType">
+                                        <option selected disabled>Select property type</option>
+                                        <option value="residential">Residential</option>
+                                        <option value="commercial">Commercial</option>
+                                        <option value="renting">Renting</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" placeholder="Enter phone number">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Form Section End -->
+    </div>
+
+    <!-- JavaScript to Save Data and Redirect -->
+    <script>
+        function saveData() {
+            var houseName = document.getElementById("houseName").value;
+            var propertyType = document.getElementById("propertyType").value;
+            var phoneNumber = document.getElementById("phoneNumber").value;
+
+            // Store the data in localStorage
+            localStorage.setItem("houseName", houseName);
+            localStorage.setItem("propertyType", propertyType);
+            localStorage.setItem("phoneNumber", phoneNumber);
+
+            // Redirect to index.html
+            window.location.href = "index.html";
+
+            // Prevent the default form submission behavior
+            return false;
+        }
+
+        // Add event listener to the form
+        document.getElementById("propertyForm").addEventListener("submit", saveData);
+    </script>
+</body>
+</html>
